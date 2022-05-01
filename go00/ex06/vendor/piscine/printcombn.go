@@ -2,7 +2,7 @@ package piscine
 
 import "ft"
 
-func printNumber(n int, num [10]rune) {
+func printNumber(n int, num [9]rune) {
 	for i := 0; i < n; i++ {
 		ft.PrintRune(num[i])
 	}
@@ -12,7 +12,7 @@ func getEndRune(n, i int) rune {
 	return rune('9' - n + 1 + i)
 }
 
-func printCombNRec(n int, num [10]rune, i int) {
+func printCombNRec(n int, num [9]rune, i int) {
 	end := getEndRune(n, i)
 
 	if i == 0 {
@@ -35,7 +35,7 @@ func printCombNRec(n int, num [10]rune, i int) {
 }
 
 func PrintCombN(n int) {
-	var num [10]rune
+	var num [9]rune
 
 	if n < 1 || n > 9 {
 		return
