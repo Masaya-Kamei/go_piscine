@@ -10,6 +10,5 @@ func RecursiveFactorial(nb int) int {
 	if ret*nb/nb != ret {
 		return 0
 	}
-	ret *= nb
-	return ret
+	return ret * nb
 }
