@@ -10,7 +10,7 @@ func Fibonacci(index int) int {
 	}
 	prev1 := Fibonacci(index - 1)
 	prev2 := Fibonacci(index - 2)
-	if prev1 < 0 || prev2 < 0 || prev1+prev2-prev2 != prev1 {
+	if prev1 < 0 || prev2 < 0 || prev1+prev2 < 0 {
 		return -1
 	}
 	return prev1 + prev2
