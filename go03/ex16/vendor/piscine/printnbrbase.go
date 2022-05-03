@@ -26,7 +26,7 @@ func isValidBase(base string, baseLen int) bool {
 		if r == '+' || r == '-' {
 			return false
 		}
-		if m[r] == true {
+		if _, ok := m[r]; ok {
 			return false
 		}
 		m[r] = true
