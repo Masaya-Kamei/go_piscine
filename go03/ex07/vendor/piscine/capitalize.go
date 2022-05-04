@@ -1,7 +1,9 @@
 package piscine
 
 func isAlNum(r rune) bool {
-	return (r >= 'a' && r <= 'z') || (r >= 'A' && r <= 'Z') || (r >= '0' && r <= '9')
+	return (r >= 'a' && r <= 'z') ||
+		(r >= 'A' && r <= 'Z') ||
+		(r >= '0' && r <= '9')
 }
 
 func toUpperRune(r rune) rune {
@@ -20,7 +22,7 @@ func toLowerRune(r rune) rune {
 
 func Capitalize(s string) string {
 	rs := []rune(s)
-	for i := range s {
+	for i := range rs {
 		if i == 0 || !isAlNum(rs[i-1]) {
 			rs[i] = toUpperRune(rs[i])
 		} else {

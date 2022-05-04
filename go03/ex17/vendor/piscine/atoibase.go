@@ -43,7 +43,9 @@ func isValidS(s string, indexMap map[rune]int) bool {
 func AtoiBase(s string, base string) int {
 	baseLen := strLen(base)
 	indexMap := createIndexMap(base)
-	if indexMap == nil || !isValidBase(base, baseLen) || !isValidS(s, indexMap) {
+	if indexMap == nil ||
+		!isValidBase(base, baseLen) ||
+		!isValidS(s, indexMap) {
 		return 0
 	}
 	nbr := 0

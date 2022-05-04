@@ -10,6 +10,12 @@ func strLen(s string) int {
 	return i
 }
 
+func printStr(s string) {
+	for _, c := range s {
+		ft.PrintRune(c)
+	}
+}
+
 func abs(nbr int) int {
 	if nbr < 0 {
 		return -nbr
@@ -37,19 +43,20 @@ func isValidBase(base string, baseLen int) bool {
 func PrintNbrBase(nbr int, base string) {
 	baseLen := strLen(base)
 	if !isValidBase(base, baseLen) {
-		ft.PrintRune('N')
-		ft.PrintRune('V')
+		printStr("NV")
 		return
 	}
 	if nbr < 0 {
 		ft.PrintRune('-')
 	}
 	rbase := []rune(base)
+	s := ""
 	for {
-		defer ft.PrintRune(rbase[abs(nbr%baseLen)])
+		s = string(rbase[abs(nbr%baseLen)]) + s
 		nbr /= baseLen
 		if nbr == 0 {
 			break
 		}
 	}
+	printStr(s)
 }
