@@ -5,6 +5,13 @@ import (
 	"os"
 )
 
+func printStrEndl(s string) {
+	for _, r := range s {
+		ft.PrintRune(r)
+	}
+	ft.PrintRune('\n')
+}
+
 func PrintProgramName() {
 	start := 0
 	for i, r := range os.Args[0] {
@@ -12,8 +19,5 @@ func PrintProgramName() {
 			start = i + 1
 		}
 	}
-	for _, r := range []rune(os.Args[0])[start:] {
-		ft.PrintRune(r)
-	}
-	ft.PrintRune('\n')
+	printStrEndl(os.Args[0][start:])
 }
