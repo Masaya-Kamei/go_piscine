@@ -9,7 +9,7 @@ func main() {
 	fmt.Println(piscine.MakeRange(5, 10))
 	fmt.Println(piscine.MakeRange(10, 5))
 
-	fmt.Println("")
+	fmt.Println()
 	fmt.Println(piscine.MakeRange(5, 5))
 	fmt.Println(piscine.MakeRange(5, 6))
 	fmt.Println(piscine.MakeRange(9223372036854775806, 9223372036854775807))
