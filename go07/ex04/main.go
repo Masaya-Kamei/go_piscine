@@ -41,7 +41,7 @@ func main() {
 	fmt.Println(piscine.IsSorted(f, []int{0}))
 	fmt.Println(piscine.IsSorted(f, []int{}))
 	fmt.Println(piscine.IsSorted(f, nil))
-	fmt.Println(piscine.IsSorted(nil, []int{0, 1}))
+	fmt.Println(piscine.IsSorted(nil, []int{1, 0}))
 	fmt.Println(piscine.IsSorted(fReverce, []int{0, 1, 2}))
 	fmt.Println(piscine.IsSorted(fReverce, []int{2, 1, 0}))
 }
