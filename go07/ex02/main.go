@@ -15,6 +15,7 @@ func main() {
 	fmt.Println(result2)
 
 	ft.PrintRune('\n')
+	fmt.Println(piscine.Any(piscine.IsNumeric, []string{"a", "b", "1"}))
 	fmt.Println(piscine.Any(piscine.IsNumeric, nil))
 	fmt.Println(piscine.Any(nil, []string{"4"}))
 }
