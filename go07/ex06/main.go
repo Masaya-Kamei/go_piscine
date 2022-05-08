@@ -18,7 +18,5 @@ func main() {
 	result = []string{"abc2", "", "abc1"}
 	piscine.SortWordArr(result)
 	fmt.Println(result)
-	result = nil
-	piscine.SortWordArr(result)
-	fmt.Println(result)
+	piscine.SortWordArr(nil)
 }
