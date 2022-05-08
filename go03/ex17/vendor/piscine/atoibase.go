@@ -10,7 +10,7 @@ func strLen(s string) int {
 
 func createIndexMap(base string) map[rune]int {
 	m := map[rune]int{}
-	for i, r := range base {
+	for i, r := range []rune(base) {
 		if _, ok := m[r]; ok {
 			return nil
 		}
@@ -19,8 +19,8 @@ func createIndexMap(base string) map[rune]int {
 	return m
 }
 
-func isValidBase(base string, baseLen int) bool {
-	if baseLen <= 1 {
+func isValidBase(base string, baseLen int, indexMap map[rune]int) bool {
+	if baseLen <= 1 || indexMap == nil {
 		return false
 	}
 	for _, r := range base {
@@ -43,8 +43,7 @@ func isValidS(s string, indexMap map[rune]int) bool {
 func AtoiBase(s string, base string) int {
 	baseLen := strLen(base)
 	indexMap := createIndexMap(base)
-	if indexMap == nil ||
-		!isValidBase(base, baseLen) ||
+	if !isValidBase(base, baseLen, indexMap) ||
 		!isValidS(s, indexMap) {
 		return 0
 	}
