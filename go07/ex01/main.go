@@ -14,4 +14,5 @@ func main() {
 	ft.PrintRune('\n')
 	fmt.Println(piscine.Map(piscine.IsPrime, []int{-1, 0, 1, 2}))
 	fmt.Println(piscine.Map(piscine.IsPrime, nil))
+	fmt.Println(piscine.Map(nil, []int{1}))
 }

@@ -16,4 +16,6 @@ func main() {
 	ft.PrintRune('\n')
 	piscine.ForEach(piscine.PrintNbr, nil)
 	ft.PrintRune('\n')
+	piscine.ForEach(nil, a)
+	ft.PrintRune('\n')
 }

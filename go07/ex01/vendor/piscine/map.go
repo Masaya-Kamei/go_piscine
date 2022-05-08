@@ -9,6 +9,9 @@ func getIntSliceLen(a []int) int {
 }
 
 func Map(f func(int) bool, a []int) []bool {
+	if f == nil {
+		return []bool{}
+	}
 	b := make([]bool, getIntSliceLen(a))
 	for i, aa := range a {
 		b[i] = f(aa)
