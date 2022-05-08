@@ -1,7 +1,7 @@
 package piscine
 
 func MakeRange(min, max int) []int {
-	if min >= max {
+	if min >= max || max-min <= 0 {
 		return nil
 	}
 	nbrs := make([]int, max-min)
