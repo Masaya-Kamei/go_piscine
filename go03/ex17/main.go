@@ -12,6 +12,7 @@ func main() {
 	fmt.Println(piscine.AtoiBase("uoi", "choumi"))
 	fmt.Println(piscine.AtoiBase("bbbbbab", "-ab"))
 
+	// fmt.Println(piscine.AtoiBase("一二五", "零一二三四五六七八九"))
 	// fmt.Println(piscine.AtoiBase("a", "ab"))
 	// fmt.Println(piscine.AtoiBase("", "ab"))
 	// fmt.Println(piscine.AtoiBase("125", "01234567890"))
