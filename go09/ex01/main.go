@@ -6,35 +6,34 @@ import (
 	"piscine"
 )
 
-func printLink(link *piscine.List) {
-	head := link.Head
-	fmt.Printf("[")
-	for head != nil {
-		fmt.Printf("%#v, ", head.Data)
-		head = head.Next
+type List = piscine.List
+
+func printList(l *List) {
+	if l == nil {
+		return
 	}
-	fmt.Printf("] ")
-	if link.Head != nil {
-		fmt.Printf("Head:%#v ", link.Head.Data)
-		fmt.Printf("Tail:%#v", link.Tail.Data)
+	link := l.Head
+	for link != nil {
+		fmt.Print(link.Data, " -> ")
+		link = link.Next
 	}
-	fmt.Printf("\n")
+	fmt.Println(nil, " Head:", l.Head, " Tail:", l.Tail)
 }
 
 func main() {
 	link := &piscine.List{}
-	printLink(link)
+	printList(link)
 	piscine.ListPushFront(link, "Hello")
-	printLink(link)
+	printList(link)
 	piscine.ListPushFront(link, "there")
-	printLink(link)
+	printList(link)
 	piscine.ListPushFront(link, "how are you")
-	printLink(link)
+	printList(link)
 
 	ft.PrintRune('\n')
 	piscine.ListPushFront(link, 42)
-	printLink(link)
+	printList(link)
 	piscine.ListPushFront(link, nil)
-	printLink(link)
+	printList(link)
 	piscine.ListPushFront(nil, 42)
 }

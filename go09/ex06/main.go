@@ -8,14 +8,16 @@ import (
 
 type List = piscine.List
 
-func printList(link *List) {
-	it := link.Head
-	for it != nil {
-		fmt.Printf("%v -> ", it.Data)
-		it = it.Next
+func printList(l *List) {
+	if l == nil {
+		return
 	}
-	fmt.Printf("%v", nil)
-	fmt.Println(" Head:", link.Head, " Tail:", link.Tail)
+	link := l.Head
+	for link != nil {
+		fmt.Print(link.Data, " -> ")
+		link = link.Next
+	}
+	fmt.Println(nil, " Head:", l.Head, " Tail:", l.Tail)
 }
 
 func main() {

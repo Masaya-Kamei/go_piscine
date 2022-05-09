@@ -9,13 +9,16 @@ import (
 type List = piscine.List
 type Node = piscine.NodeL
 
-func PrintList(l *List) {
+func printList(l *List) {
+	if l == nil {
+		return
+	}
 	link := l.Head
 	for link != nil {
 		fmt.Print(link.Data, " -> ")
 		link = link.Next
 	}
-	fmt.Println(nil)
+	fmt.Println(nil, " Head:", l.Head, " Tail:", l.Tail)
 }
 
 func main() {
@@ -25,10 +28,10 @@ func main() {
 	piscine.ListPushBack(link, "something")
 	piscine.ListPushBack(link, 2)
 	fmt.Println("------list------")
-	PrintList(link)
+	printList(link)
 	piscine.ListClear(link)
 	fmt.Println("------updated list------")
-	PrintList(link)
+	printList(link)
 
 	ft.PrintRune('\n')
 	piscine.ListClear(nil)
