@@ -9,14 +9,9 @@ import (
 type List = piscine.List
 
 func printList(l *List) {
-	if l == nil {
-		return
-	}
-	link := l.Head
 	fmt.Print("[")
-	for link != nil {
+	for link := l.Head; link != nil; link = link.Next {
 		fmt.Print(link.Data, " -> ")
-		link = link.Next
 	}
 	fmt.Print(nil, "]")
 	if l.Head == nil && l.Tail == nil {
