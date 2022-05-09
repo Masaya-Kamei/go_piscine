@@ -22,11 +22,17 @@ func printList(l *List) {
 		return
 	}
 	link := l.Head
+	fmt.Print("[")
 	for link != nil {
 		fmt.Print(link.Data, " -> ")
 		link = link.Next
 	}
-	fmt.Println(nil, " Head:", l.Head, " Tail:", l.Tail)
+	fmt.Print(nil, "]")
+	if l.Head == nil && l.Tail == nil {
+		fmt.Println("  Head:", nil, "Tail:", nil)
+	} else {
+		fmt.Println("  Head:", l.Head.Data, "Tail:", l.Tail.Data)
+	}
 }
 
 func main() {
