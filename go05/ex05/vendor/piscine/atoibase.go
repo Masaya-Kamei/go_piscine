@@ -32,6 +32,9 @@ func isValidBase(base string, baseLen int, indexMap map[rune]int) bool {
 }
 
 func isValidS(s string, indexMap map[rune]int) bool {
+	if s == "" {
+		return false
+	}
 	for _, r := range s {
 		if _, ok := indexMap[r]; !ok {
 			return false
