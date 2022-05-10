@@ -4,18 +4,13 @@ import (
 	"os"
 )
 
-const (
-	MaxInt = int(^uint(0) >> 1)
-	MinInt = -MaxInt - 1
-)
-
 type StrError string
 
 func (e StrError) Error() string {
 	return string(e)
 }
 
-func atoi(s string) int {
+func atoi(s string) (int, bool) {
 	sign := 1
 	if s != "" && (s[0] == '+' || s[0] == '-') {
 		if s[0] == '-' {
@@ -26,18 +21,16 @@ func atoi(s string) int {
 	nbr := 0
 	for _, r := range s {
 		if r < '0' || r > '9' {
-			return 0
+			return 0, false
 		}
-		if nbr*10/10 != nbr {
-			return 0
+		if (nbr*10/10 != nbr) ||
+			(sign == 1 && nbr*10+int(r-'0') < 0) ||
+			(sign == -1 && nbr*10-int(r-'0') > 0) {
+			return 0, false
 		}
-		nbr *= 10
-		if n := nbr + int(r-'0'); n < 0 && !(sign == -1 && n == MinInt) {
-			return 0
-		}
-		nbr += int(r - '0')
+		nbr = nbr*10 + int(r-'0')*sign
 	}
-	return nbr * sign
+	return nbr, true
 }
 
 func isExistElement(strs []string, index int) bool {
@@ -51,6 +44,7 @@ func isExistElement(strs []string, index int) bool {
 
 func readOptionC() (int, error) {
 	optionC := -1
+	ok := false
 	if !isExistElement(os.Args, 1) {
 		return optionC, nil
 	}
@@ -58,8 +52,8 @@ func readOptionC() (int, error) {
 		if !isExistElement(os.Args, 2) {
 			return 0, StrError("Invalid option c argument.")
 		}
-		optionC = atoi(os.Args[2])
-		if optionC <= 0 {
+		optionC, ok = atoi(os.Args[2])
+		if !ok || optionC <= 0 {
 			return 0, StrError("Invalid option c argument.")
 		}
 	}
