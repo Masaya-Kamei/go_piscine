@@ -11,6 +11,9 @@ func main() {
 	piscine.BTreeInsertData(root, "1")
 	piscine.BTreeInsertData(root, "7")
 	piscine.BTreeInsertData(root, "5")
+	printBTree(root)
+	ft.PrintRune('\n')
+
 	piscine.BTreeApplyPreorder(root, fmt.Println)
 	ft.PrintRune('\n')
 
