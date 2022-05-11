@@ -14,14 +14,14 @@ const (
 	OddMsg          = "I have an odd number of arguments"
 )
 
-var lengthOfArg int = getArgc(os.Args)
+var lengthOfArg int = getStrsLen(os.Args[1:])
 
-func getArgc(args []string) int {
-	argc := 0
-	for range args {
-		argc++
+func getStrsLen(strs []string) int {
+	len := 0
+	for range strs {
+		len++
 	}
-	return argc
+	return len
 }
 
 func even(nbr int) int { return nbr % 2 }
@@ -34,7 +34,7 @@ func printStr(s string) {
 }
 
 func isEven(nbr int) boolean {
-	if even(nbr) == 1 {
+	if even(nbr) == 0 {
 		return yes
 	} else {
 		return no

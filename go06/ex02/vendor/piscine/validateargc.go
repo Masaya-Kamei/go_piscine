@@ -2,7 +2,16 @@ package piscine
 
 import "os"
 
-type ArgcError string
+type ArgMissingError struct{}
+type ArgTooManyError struct{}
+
+func (e ArgMissingError) Error() string {
+	return "File name missing"
+}
+
+func (e ArgTooManyError) Error() string {
+	return "Too many arguments"
+}
 
 func getArgc() int {
 	i := 0
@@ -12,16 +21,12 @@ func getArgc() int {
 	return i
 }
 
-func (e ArgcError) Error() string {
-	return string(e)
-}
-
 func validateArgc() error {
 	argc := getArgc()
 	if argc == 1 {
-		return ArgcError("File name missing")
+		return ArgMissingError{}
 	} else if argc >= 3 {
-		return ArgcError("Too many arguments")
+		return ArgTooManyError{}
 	}
 	return nil
 }
