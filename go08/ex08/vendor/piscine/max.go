@@ -1,10 +1,5 @@
 package piscine
 
-const (
-	intMax = int(^uint(0) >> 1)
-	intMin = -intMax - 1
-)
-
 func isEmpty(a []int) bool {
 	for range a {
 		return false
