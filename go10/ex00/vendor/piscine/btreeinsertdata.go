@@ -6,18 +6,21 @@ type TreeNode struct {
 }
 
 func BTreeInsertData(root *TreeNode, data string) *TreeNode {
-	parent := root
-	child := &root
-	for *child != nil {
-		parent = *child
-		if data < parent.Data {
-			child = &parent.Left
-		} else if data > parent.Data {
-			child = &parent.Right
-		} else {
+	if root == nil {
+		return &TreeNode{Data: data}
+	}
+	if data < root.Data {
+		if root.Left == nil {
+			root.Left = &TreeNode{Data: data, Parent: root}
 			return root
 		}
+		return BTreeInsertData(root.Left, data).Parent
+	} else if data > root.Data {
+		if root.Right == nil {
+			root.Right = &TreeNode{Data: data, Parent: root}
+			return root
+		}
+		return BTreeInsertData(root.Right, data).Parent
 	}
-	*child = &TreeNode{Data: data, Parent: parent}
 	return root
 }

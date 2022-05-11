@@ -13,6 +13,9 @@ func main() {
 	printBTree(root)
 	ft.PrintRune('\n')
 
+	printBTree(piscine.BTreeInsertData(root, "0"))
+	ft.PrintRune('\n')
+
 	printBTree(piscine.BTreeInsertData(root, "1"))
 	ft.PrintRune('\n')
 
