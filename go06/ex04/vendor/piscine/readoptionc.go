@@ -4,10 +4,10 @@ import (
 	"os"
 )
 
-type StrError string
+type opCError struct{}
 
-func (e StrError) Error() string {
-	return string(e)
+func (e opCError) Error() string {
+	return "Invalid option c argument."
 }
 
 func atoi(s string) (int, bool) {
@@ -33,28 +33,28 @@ func atoi(s string) (int, bool) {
 	return nbr, true
 }
 
-func isExistElement(strs []string, index int) bool {
-	for i := range strs {
-		if i == index {
-			return true
-		}
+func getArgc() int {
+	i := 0
+	for range os.Args {
+		i++
 	}
-	return false
+	return i
 }
 
 func readOptionC() (int, error) {
 	optionC := -1
 	ok := false
-	if !isExistElement(os.Args, 1) {
+	argc := getArgc()
+	if argc <= 1 {
 		return optionC, nil
 	}
 	if os.Args[1] == "-c" {
-		if !isExistElement(os.Args, 2) {
-			return 0, StrError("Invalid option c argument.")
+		if argc == 2 {
+			return 0, opCError{}
 		}
 		optionC, ok = atoi(os.Args[2])
 		if !ok || optionC <= 0 {
-			return 0, StrError("Invalid option c argument.")
+			return 0, opCError{}
 		}
 	}
 	return optionC, nil

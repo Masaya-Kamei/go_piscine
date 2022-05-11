@@ -5,7 +5,7 @@ import (
 	"os"
 )
 
-func getArgInfo(optionC int) ([]string, int) {
+func getRemainingArg(optionC int) ([]string, int) {
 	args := os.Args[1:]
 	if optionC != -1 {
 		args = os.Args[3:]
@@ -35,7 +35,7 @@ func ZTail() {
 		os.Exit(1)
 	}
 
-	args, argc := getArgInfo(optionC)
+	args, argc := getRemainingArg(optionC)
 	if argc == 0 {
 		os.Exit(tailFile("/dev/stdin", optionC, nil))
 	}
