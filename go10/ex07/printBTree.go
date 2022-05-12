@@ -37,6 +37,7 @@ func printTreeNode(n *TreeNode) int {
 
 func printBTree(root *TreeNode) {
 	if root == nil {
+		fmt.Println("nil")
 		return
 	}
 	table := [maxDepth][maxLength]*TreeNode{}

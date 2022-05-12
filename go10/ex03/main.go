@@ -28,7 +28,9 @@ func main() {
 	ft.PrintRune('\n')
 
 	fmt.Println("SearchItem (root, 0)")
-	printTreeNode(piscine.BTreeSearchItem(root, "0"))
+	printBTree(piscine.BTreeSearchItem(root, "0"))
+	ft.PrintRune('\n')
+
 	fmt.Println("SearchItem (nil, 7)")
-	printTreeNode(piscine.BTreeSearchItem(nil, "7"))
+	printBTree(piscine.BTreeSearchItem(nil, "7"))
 }
