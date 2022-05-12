@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"ft"
 	"piscine"
 )
@@ -10,15 +11,24 @@ func main() {
 	piscine.BTreeInsertData(root, "1")
 	piscine.BTreeInsertData(root, "7")
 	piscine.BTreeInsertData(root, "5")
+	fmt.Println("Initial root")
 	printBTree(root)
 	ft.PrintRune('\n')
 
-	printTreeNode(piscine.BTreeSearchItem(root, "7"))
+	fmt.Println("SearchItem (root, 7)")
+	printBTree(piscine.BTreeSearchItem(root, "7"))
 	ft.PrintRune('\n')
-	printTreeNode(piscine.BTreeSearchItem(root, "1"))
+
+	fmt.Println("SearchItem (root, 1)")
+	printBTree(piscine.BTreeSearchItem(root, "1"))
 	ft.PrintRune('\n')
-	printTreeNode(piscine.BTreeSearchItem(&piscine.TreeNode{Data: "4"}, "4"))
+
+	fmt.Println("SearchItem (&piscine.TreeNode{Data: \"4\"}, 4)")
+	printBTree(piscine.BTreeSearchItem(&piscine.TreeNode{Data: "4"}, "4"))
 	ft.PrintRune('\n')
+
+	fmt.Println("SearchItem (root, 0)")
 	printTreeNode(piscine.BTreeSearchItem(root, "0"))
+	fmt.Println("SearchItem (nil, 7)")
 	printTreeNode(piscine.BTreeSearchItem(nil, "7"))
 }
