@@ -17,7 +17,9 @@ func main() {
 	node := p.BTreeSearchItem(root, "1")
 	replacement := &p.TreeNode{Data: "3"}
 	printBTree(p.BTreeTransplant(root, node, replacement))
+	p.BTreeApplyInorder(root, fmt.Println)
 	ft.PrintRune('\n')
+
 	printBTree(p.BTreeTransplant(root, p.BTreeSearchItem(root, "3"), nil))
 	ft.PrintRune('\n')
 	printBTree(p.BTreeTransplant(root, root, p.BTreeSearchItem(root, "7")))
