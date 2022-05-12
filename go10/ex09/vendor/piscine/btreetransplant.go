@@ -6,11 +6,12 @@ type TreeNode struct {
 }
 
 func isPartOfBTree(root, node *TreeNode) bool {
-	n := node
-	for n.Parent != nil {
-		n = n.Parent
+	for n := node; n != nil; n = n.Parent {
+		if n == root {
+			return true
+		}
 	}
-	return n == root
+	return false
 }
 
 func BTreeTransplant(root, node, rplc *TreeNode) *TreeNode {
