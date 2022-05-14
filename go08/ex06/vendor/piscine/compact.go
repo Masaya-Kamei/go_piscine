@@ -1,28 +1,25 @@
 package piscine
 
-func countNonZeroValue(strs []string) int {
-	count := 0
+func getNoEmptyStrMap(strs []string) (map[int]string, int) {
+	mapLen := 0
+	strMap := map[int]string{}
 	for _, s := range strs {
 		if s != "" {
-			count++
+			strMap[mapLen] = s
+			mapLen++
 		}
 	}
-	return count
+	return strMap, mapLen
 }
 
 func Compact(ptr *[]string) int {
 	if ptr == nil || *ptr == nil {
 		return 0
 	}
-	count := countNonZeroValue(*ptr)
-	strs := make([]string, count)
-	i := 0
-	for _, s := range *ptr {
-		if s != "" {
-			strs[i] = s
-			i++
-		}
+	strMap, mapLen := getNoEmptyStrMap(*ptr)
+	*ptr = make([]string, mapLen)
+	for i := 0; i < mapLen; i++ {
+		(*ptr)[i] = strMap[i]
 	}
-	*ptr = strs
-	return count
+	return mapLen
 }

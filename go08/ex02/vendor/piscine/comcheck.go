@@ -13,13 +13,12 @@ func printStrEndl(s string) {
 }
 
 func ComCheck() {
-	checkStrs := []string{"42", "piscine", "piscine 42"}
+	checkMap := map[string]struct{}{"42": {}, "piscine": {}, "piscine 42": {}}
+
 	for _, arg := range os.Args[1:] {
-		for _, s := range checkStrs {
-			if arg == s {
-				printStrEndl("Alert!!!")
-				return
-			}
+		if _, ok := checkMap[arg]; ok {
+			printStrEndl("Alert!!!")
+			return
 		}
 	}
 }
