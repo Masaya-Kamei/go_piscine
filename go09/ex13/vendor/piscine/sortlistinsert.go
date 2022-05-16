@@ -14,7 +14,7 @@ func SortListInsert(l *NodeI, data_ref int) *NodeI {
 		return newNode
 	}
 	for n := l; n != nil; n = n.Next {
-		if data_ref >= n.Data && (n.Next == nil || data_ref <= n.Next.Data) {
+		if n.Next == nil || data_ref <= n.Next.Data {
 			newNode.Next = n.Next
 			n.Next = newNode
 			break

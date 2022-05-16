@@ -5,16 +5,32 @@ type NodeI struct {
 	Next *NodeI
 }
 
-func ListSort(l *NodeI) *NodeI {
-	if l == nil {
-		return nil
-	}
-	var sentinel *NodeI
-	var node *NodeI
-	for sentinel = nil; sentinel != l.Next; sentinel = node {
-		for node = l; node.Next != sentinel; node = node.Next {
-			node.Data, node.Next.Data = node.Next.Data, node.Data
+func getMaxNode(l *NodeI) (*NodeI, *NodeI) {
+	var max_prev *NodeI = nil
+	max := l
+	var prev *NodeI = nil
+	node := l
+	for node != nil {
+		if max.Data < node.Data {
+			max_prev, max = prev, node
 		}
+		prev, node = node, node.Next
 	}
-	return l
+	return max_prev, max
+}
+
+func ListSort(l *NodeI) *NodeI {
+	var sorted *NodeI
+
+	for l != nil {
+		max_prev, max := getMaxNode(l)
+		if max_prev == nil {
+			l = max.Next
+		} else {
+			max_prev.Next = max.Next
+		}
+		max.Next = sorted
+		sorted = max
+	}
+	return sorted
 }

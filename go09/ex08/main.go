@@ -2,12 +2,8 @@ package main
 
 import (
 	"fmt"
-	"ft"
 	"piscine"
 )
-
-type List = piscine.List
-type NodeL = piscine.NodeL
 
 func PrintElem(node *NodeL) {
 	fmt.Println(node.Data)
@@ -15,19 +11,6 @@ func PrintElem(node *NodeL) {
 
 func StringToInt(node *NodeL) {
 	node.Data = 2
-}
-
-func printList(l *List) {
-	fmt.Print("[")
-	for link := l.Head; link != nil; link = link.Next {
-		fmt.Print(link.Data, " -> ")
-	}
-	fmt.Print(nil, "]")
-	if l.Head == nil && l.Tail == nil {
-		fmt.Println("  Head:", nil, "Tail:", nil)
-	} else {
-		fmt.Println("  Head:", l.Head.Data, "Tail:", l.Tail.Data)
-	}
 }
 
 func main() {
@@ -44,10 +27,8 @@ func main() {
 	piscine.ListForEachIf(link, StringToInt, piscine.IsAlNode)
 	printList(link)
 
-	ft.PrintRune('\n')
 	piscine.ListForEachIf(&piscine.List{}, PrintElem, piscine.IsPositiveNode)
 	piscine.ListForEachIf(nil, PrintElem, piscine.IsPositiveNode)
 	piscine.ListForEachIf(&piscine.List{}, nil, piscine.IsPositiveNode)
 	piscine.ListForEachIf(&piscine.List{}, PrintElem, nil)
-	printList(link)
 }
