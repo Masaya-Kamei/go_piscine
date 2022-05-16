@@ -36,10 +36,11 @@ func main() {
 	link = listPushBack(link, 7)
 	link2 = listPushBack(link2, -2)
 	link2 = listPushBack(link2, 9)
-	PrintList(piscine.SortedListMerge(link2, link))
+	link3 := piscine.SortedListMerge(link2, link)
+	PrintList(link3)
 
 	ft.PrintRune('\n')
-	PrintList(piscine.SortedListMerge(link, nil))
-	PrintList(piscine.SortedListMerge(nil, link))
+	PrintList(piscine.SortedListMerge(link3, nil))
+	PrintList(piscine.SortedListMerge(nil, link3))
 	PrintList(piscine.SortedListMerge(nil, nil))
 }

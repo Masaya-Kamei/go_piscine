@@ -29,11 +29,11 @@ func IsAlNode(node *NodeL) bool {
 }
 
 func ListForEachIf(l *List, f func(*NodeL), cond func(*NodeL) bool) {
-	if l == nil || f == nil || cond == nil {
+	if l == nil || f == nil {
 		return
 	}
 	for node := l.Head; node != nil; node = node.Next {
-		if cond(node) {
+		if cond == nil || cond(node) {
 			f(node)
 		}
 	}

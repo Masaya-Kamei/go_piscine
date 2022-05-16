@@ -15,19 +15,20 @@ func main() {
 	found := piscine.ListFind(link, interface{}("hello2"), piscine.CompStr)
 	fmt.Println(found)
 	fmt.Println(*found)
-
 	ft.PrintRune('\n')
 
 	found = piscine.ListFind(link, "hello2", piscine.CompStr)
 	fmt.Println(found, *found)
 	found = piscine.ListFind(link, "hello5", piscine.CompStr)
 	fmt.Println(found)
+	ft.PrintRune('\n')
 
 	piscine.ListPushBack(link, 1)
 	found = piscine.ListFind(link, 1, piscine.CompStr)
 	fmt.Println(found, *found)
 	found = piscine.ListFind(link, float64(1), piscine.CompStr)
 	fmt.Println(found)
+	ft.PrintRune('\n')
 
 	piscine.ListPushBack(link, nil)
 	found = piscine.ListFind(link, nil, piscine.CompStr)
@@ -35,6 +36,7 @@ func main() {
 	var a *int = nil
 	found = piscine.ListFind(link, a, piscine.CompStr)
 	fmt.Println(found)
+	ft.PrintRune('\n')
 
 	found = piscine.ListFind(nil, interface{}("hello2"), piscine.CompStr)
 	fmt.Println(found)
