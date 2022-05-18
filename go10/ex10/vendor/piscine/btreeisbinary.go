@@ -1,10 +1,5 @@
 package piscine
 
-type TreeNode struct {
-	Left, Right, Parent *TreeNode
-	Data                string
-}
-
 func bTreeLessCheck(node *TreeNode, data string) bool {
 	if node == nil {
 		return true

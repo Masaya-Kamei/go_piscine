@@ -22,8 +22,8 @@ func main() {
 	p.BTreeApplyInorder(root, fmt.Println)
 	ft.PrintRune('\n')
 
-	fmt.Println("Delete (root, 7)")
-	root = p.BTreeDeleteNode(root, p.BTreeSearchItem(root, "7"))
+	fmt.Println("Delete (root, 1)")
+	root = p.BTreeDeleteNode(root, p.BTreeSearchItem(root, "1"))
 	printBTree(root)
 	fmt.Println(p.BTreeIsBinary(root))
 	ft.PrintRune('\n')
@@ -40,8 +40,8 @@ func main() {
 	fmt.Println(p.BTreeIsBinary(root))
 	ft.PrintRune('\n')
 
-	fmt.Println("Delete (root, 1)")
-	root = p.BTreeDeleteNode(root, p.BTreeSearchItem(root, "1"))
+	fmt.Println("Delete (root, 7)")
+	root = p.BTreeDeleteNode(root, p.BTreeSearchItem(root, "7"))
 	printBTree(root)
 	fmt.Println(p.BTreeIsBinary(root))
 	ft.PrintRune('\n')
