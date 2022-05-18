@@ -7,39 +7,22 @@ import (
 
 type TreeNode = piscine.TreeNode
 
-func printTreeNode(n *TreeNode) {
-	gD := func(n *TreeNode) string {
-		if n == nil {
-			return " "
-		}
-		return n.Data
+func printTreeNodeLevel(root *TreeNode, depth int) {
+	for i := 0; i < depth; i++ {
+		fmt.Print("\t")
 	}
-	fmt.Printf("(%v->)%v->[%v, %v] ", gD(n.Parent), n.Data, gD(n.Left), gD(n.Right))
-}
-
-func printTreeNodeLevel(root *TreeNode, depth int) bool {
-	if root == nil {
-		return false
-	}
-	if depth == 0 {
-		printTreeNode(root)
-		return true
-	}
-	ok1 := printTreeNodeLevel(root.Left, depth-1)
-	ok2 := printTreeNodeLevel(root.Right, depth-1)
-	return ok1 || ok2
-}
-
-func printBTree(root *TreeNode) {
 	if root == nil {
 		fmt.Println("nil")
 		return
+	} else {
+		fmt.Println(root.Data)
 	}
-	ok := true
-	for depth := 0; ok; depth++ {
-		if depth != 0 {
-			fmt.Println()
-		}
-		ok = printTreeNodeLevel(root, depth)
+	if root.Right != nil || root.Left != nil {
+		printTreeNodeLevel(root.Right, depth+1)
+		printTreeNodeLevel(root.Left, depth+1)
 	}
+}
+
+func printBTree(root *TreeNode) {
+	printTreeNodeLevel(root, 0)
 }
