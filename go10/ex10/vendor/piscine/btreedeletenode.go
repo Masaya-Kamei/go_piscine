@@ -14,23 +14,37 @@ func isPartOfBTree(root, node *TreeNode) bool {
 	return false
 }
 
+func getAltNode(node *TreeNode) *TreeNode {
+	var altNode *TreeNode
+
+	if node.Left == nil && node.Right == nil {
+		altNode = nil
+	} else if node.Left != nil {
+		altNode = BTreeMax(node.Left)
+		BTreeTransplant(altNode, altNode, altNode.Left)
+	} else if node.Right != nil {
+		altNode = BTreeMin(node.Right)
+		BTreeTransplant(altNode, altNode, altNode.Right)
+	}
+	return altNode
+}
+
 func BTreeDeleteNode(root, node *TreeNode) *TreeNode {
 	if root == nil || node == nil || !isPartOfBTree(root, node) {
 		return root
 	}
-	if node.Left == nil && node.Right == nil {
-		if node == root {
-			return nil
+
+	altNode := getAltNode(node)
+	if altNode != nil {
+		altNode.Left = node.Left
+		altNode.Right = node.Right
+		if altNode.Left != nil {
+			altNode.Left.Parent = altNode
 		}
-		BTreeTransplant(node.Parent, node, nil)
-	} else if node.Left != nil {
-		max := BTreeMax(node.Left)
-		BTreeTransplant(max.Parent, max, max.Left)
-		node.Data = max.Data
-	} else if node.Right != nil {
-		min := BTreeMin(node.Right)
-		BTreeTransplant(min.Parent, min, min.Right)
-		node.Data = min.Data
+		if altNode.Right != nil {
+			altNode.Right.Parent = altNode
+		}
 	}
+	root = BTreeTransplant(root, node, altNode)
 	return root
 }

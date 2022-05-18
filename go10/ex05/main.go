@@ -18,8 +18,12 @@ func main() {
 	fmt.Println("IsBinary (root)")
 	fmt.Println(piscine.BTreeIsBinary(root))
 
-	fmt.Println("IsBinary (root)")
-	root.Left.Left = &TreeNode{Data: "8", Parent: root.Left}
+	fmt.Println("IsBinary (root)  [Add 8]")
+	root.Left.Right = &TreeNode{Data: "8", Parent: root.Left}
+	fmt.Println(piscine.BTreeIsBinary(root))
+
+	fmt.Println("IsBinary (root)  [Add 3]")
+	root.Left.Right.Data = "3"
 	fmt.Println(piscine.BTreeIsBinary(root))
 
 	fmt.Println("IsBinary (&TreeNode{Data: \"4\"})")

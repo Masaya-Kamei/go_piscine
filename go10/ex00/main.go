@@ -19,8 +19,8 @@ func main() {
 	printBTree(piscine.BTreeInsertData(root, "0"))
 	ft.PrintRune('\n')
 
-	fmt.Println("Insert (root, 1)")
-	printBTree(piscine.BTreeInsertData(root, "1"))
+	fmt.Println("Insert (root, 9)")
+	printBTree(piscine.BTreeInsertData(root, "9"))
 	ft.PrintRune('\n')
 
 	fmt.Println("Insert (nil, 1)")

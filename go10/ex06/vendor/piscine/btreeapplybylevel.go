@@ -5,27 +5,37 @@ type TreeNode struct {
 	Data                string
 }
 
-type funcType func(...interface{}) (int, error)
+func (queue *List) enQueue(data *TreeNode) {
+	ListPushBack(queue, data)
+}
 
-func bTreeApplyLevel(root *TreeNode, f funcType, depth int) bool {
-	if root == nil {
-		return false
+func (queue *List) deQueue() (*TreeNode, bool) {
+	if queue.Head == nil {
+		return nil, false
 	}
-	if depth == 0 {
-		f(root.Data)
-		return true
+	node := queue.Head.Data.(*TreeNode)
+	queue.Head = queue.Head.Next
+	if queue.Head == nil {
+		queue.Tail = nil
 	}
-	ok1 := bTreeApplyLevel(root.Left, f, depth-1)
-	ok2 := bTreeApplyLevel(root.Right, f, depth-1)
-	return ok1 || ok2
+	return node, true
 }
 
 func BTreeApplyByLevel(root *TreeNode, f func(...interface{}) (int, error)) {
 	if root == nil || f == nil {
 		return
 	}
+	queue := &List{}
+	node := root
 	ok := true
-	for depth := 0; ok; depth++ {
-		ok = bTreeApplyLevel(root, f, depth)
+	for ok {
+		f(node.Data)
+		if node.Left != nil {
+			queue.enQueue(node.Left)
+		}
+		if node.Right != nil {
+			queue.enQueue(node.Right)
+		}
+		node, ok = queue.deQueue()
 	}
 }
